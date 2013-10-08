@@ -1,0 +1,22 @@
+body {background-color: orange}
+h1	{color: blue;}
+h2	{color: black;}
+li	{padding: 10px 0px 0px 10px;
+	}
+	
+.header_box {width: 1000px;}
+
+.twitter {float: left;
+		  width: 500px;}
+#twitter {width: 460px;
+		  text-align: left;
+		  padding: 10px;}
+
+.stocks {float: left;
+		 width: 500px;}
+#stocks {width: 460px;
+		 text-align: left;
+		 padding: 10px;}
+
+.alert	{color: red;
+		font-weight: bold;}

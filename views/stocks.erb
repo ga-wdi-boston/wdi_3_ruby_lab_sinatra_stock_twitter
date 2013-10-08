@@ -1,0 +1,30 @@
+<div id="stocks">
+
+<% if @times >= 2 %>
+	<h1 id="alert" class="stocks">
+	<%= @stock_name %> is moving fast, trading at 
+	<%= @times %> times its average volume!</h1>
+<% end %>
+
+<h2 class="stocks"><%= @stock_name %> is currently trading on <%= @exchange %> at <%= @stock_current %>.</h2>
+
+<h2 class="stocks">
+<%= @stock_name %> stocks are trading at the volume of <%= @volume %> stocks per day, which is <%= @trend %> compared to the average trading volume of <%= @avg_volume %>.
+</h2>
+	
+</div>
+
+
+<div id="twitter">
+
+<h2 class="twitter">Recent Tweets about <%= @stock_name %>:</h2>
+
+<ul class="twitter">
+	<% @recent_tweets.each do |tweet| %>
+	<li class="twitter"><%= tweet %></li>
+	<% end %>
+</ul>
+
+
+</div>
+
