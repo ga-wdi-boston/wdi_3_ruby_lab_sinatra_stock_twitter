@@ -1,0 +1,79 @@
+GIT
+  remote: git://github.com/sferik/twitter.git
+  revision: c1141b96d823b2e43c55c1ba544fe27407859903
+  specs:
+    twitter (5.0.0.rc.1)
+      buftok (~> 0.1.0)
+      descendants_tracker (~> 0.0.1)
+      equalizer (~> 0.0.7)
+      faraday (>= 0.8, < 0.10)
+      http (~> 0.5.0)
+      http_parser.rb (~> 0.5.0)
+      json (~> 1.8)
+      simple_oauth (~> 0.2.0)
+      thread_safe (~> 0.1.3)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    atomic (1.1.14)
+    backports (3.3.4)
+    buftok (0.1)
+    coderay (1.0.9)
+    descendants_tracker (0.0.3)
+    dotenv (0.9.0)
+    equalizer (0.0.7)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
+    hpricot (0.8.6)
+    http (0.5.0)
+      http_parser.rb
+    http_parser.rb (0.5.3)
+    json (1.8.0)
+    method_source (0.8.2)
+    mime-types (1.25)
+    multi_json (1.8.1)
+    multipart-post (1.2.0)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    rack (1.5.2)
+    rack-protection (1.5.0)
+      rack
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    simple_oauth (0.2.0)
+    sinatra (1.4.3)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    sinatra-contrib (1.4.1)
+      backports (>= 2.0)
+      multi_json
+      rack-protection
+      rack-test
+      sinatra (~> 1.4.0)
+      tilt (~> 1.3)
+    sinatra-reloader (1.0)
+      sinatra-contrib
+    slop (3.4.6)
+    stock_quote (1.0.3)
+      hpricot
+      rest-client
+    thread_safe (0.1.3)
+      atomic
+    tilt (1.4.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dotenv
+  pry
+  sinatra
+  sinatra-reloader
+  stock_quote
+  twitter!
