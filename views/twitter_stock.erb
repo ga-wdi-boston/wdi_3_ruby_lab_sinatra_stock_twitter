@@ -1,0 +1,14 @@
+<h1> Stock information for <%= @stock.company %></h1>
+<p> High $<%= @stock.high %></p>
+<p> Low $<%=  @stock.low %></p>
+<p> Trading Volume <%= @stock.volume %></p>
+<p> Last Price $<%= @stock.last %></p>
+<h1> 15 recent Tweets about <%= @stock.company %></h1>
+<ol>
+	<% @tweets.each do |tweet| %>
+	<li><%= tweet %></li><br>
+	<% end %> 
+</ol>
+
+
+
