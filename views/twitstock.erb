@@ -1,5 +1,23 @@
-<ul>
-<% @stock_tweets.each do |tweet| %>
-  <li><%= tweet %></li>
-<% end %>
-</ul>
+
+<div id="stock-data">
+  <p><%= @stock.company %></p>
+  <p><%= @stock.symbol %></p>
+  <p><%= @stock.exchange %></p>
+  <p><%= @stock.last %></p>
+  <p><%= @stock.high %></p>
+  <p><%= @stock.low %></p>
+  <p><%= @stock.open %></p>
+  <p><%= @stock.last %></p>
+  <p><%= @stock.volume %></p>
+  <p><%= @stock.market_cap %></p>
+  <p><%= @stock.current_date_utc %></p>
+  <p><%= @stock.current_time_utc %></p>
+</div>
+
+<div id="stock-related-tweets">
+  <ul>
+  <% @stock_tweets.each do |tweet| %>
+    <li><%= tweet %></li>
+  <% end %>
+  </ul>
+</div>

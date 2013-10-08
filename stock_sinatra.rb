@@ -17,10 +17,6 @@ end
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
-# def tweet_stocks(symbol)
-#   client.search(symbol)
-# end
-
 get '/stocks/new' do
   erb :stock_form
 end
@@ -33,7 +29,7 @@ end
 
 get '/stocks/:symbol' do
   @symbol = params[:symbol]
-  # stock = StockQuote::Stock.quote(@symbol)
+  @stock = StockQuote::Stock.quote(@symbol)
   
   @stock_tweets = client.search(@symbol, count: 25, result_type: 'recent', lang: 'en').collect do |tweet|
     "#{tweet.text}"
