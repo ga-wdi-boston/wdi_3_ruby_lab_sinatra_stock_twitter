@@ -35,7 +35,7 @@ get '/stocks/:symbol' do
   @symbol = params[:symbol]
   # stock = StockQuote::Stock.quote(@symbol)
   
-  client.search(@symbol, count: 25, result_type: 'recent', lang: 'en').collect do |tweet|
+  @stock_tweets = client.search(@symbol, count: 25, result_type: 'recent', lang: 'en').collect do |tweet|
     "#{tweet.text}"
   end
   erb :twitstock
