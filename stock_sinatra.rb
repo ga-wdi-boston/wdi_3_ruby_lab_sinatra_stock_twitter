@@ -4,6 +4,7 @@ require 'stock_quote'
 require 'twitter'
 require 'sinatra'
 require 'sinatra/reloader' if development?
+
 set :server, 'webrick'
 Dotenv.load
 
@@ -16,14 +17,26 @@ end
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
+# def tweet_stocks(symbol)
+#   client.search(symbol)
+# end
+
+get '/stocks/new' do
+  erb :stock_form
+end
+
+post '/stocks/create' do
+  stock_name = params[:stock_name]
+  @stock = StockQuote::Stock.quote(stock_name)
+  erb :show_stock
+end
 
 get '/stocks/:symbol' do
-  topic = params[:symbol]
-  topic_tweets = []
-  stock = StockQuote::Stock.quote(topic)
+  @symbol = params[:symbol]
+  # stock = StockQuote::Stock.quote(@symbol)
   
-  client.search(topic, count: 25, result_type: 'recent', lang: 'en').collect do |tweet|
-    # topic_tweets << {user: tweet.attrs[:user][:screen_name], tweet: tweet.text}
+  client.search(@symbol, count: 25, result_type: 'recent', lang: 'en').collect do |tweet|
     "#{tweet.text}"
   end
+  erb :twitstock
 end
