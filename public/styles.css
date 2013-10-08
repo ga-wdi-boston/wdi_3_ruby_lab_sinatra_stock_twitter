@@ -1,6 +1,8 @@
 body {background-color: rgb(191,255,134);
 	  width: 840px;
-	  text-align: center;}
+	  text-align: center;
+	  font-family: 'Andika', sans-serif;
+	}
 
 h1	{color: rgb(166,40,178);}
 
@@ -30,7 +32,7 @@ h1.heading {color: rgb(241,109,255);
 		 text-align: center;
 		 padding: 10px;}
 
-h1#alert {font-weight: bold;
+h2#alert {font-weight: bold;
 		  padding: 40px;
 		  background-color: rgb(177,255,109);
 		  border: 10px rgb(114,178,58) solid;

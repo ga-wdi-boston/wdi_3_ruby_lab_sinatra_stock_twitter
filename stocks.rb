@@ -15,6 +15,49 @@ client = Twitter::REST::Client.new do |config|
   config.access_token_secret = ENV["ACCESS_SECRET"]
 end
 
+get '/stocks/new' do
+	erb :stock_form
+end
+
+# post '/stocks/create' do
+# 	stock = params[:stock_name]
+# 	@heading = "Quick Lookup: #{stock}"
+# 	@stock_name = StockQuote::Stock.quote("#{stock}").company
+# 	@stock_current = "$#{StockQuote::Stock.quote("#{stock}").last}"
+# 	erb :show_stock
+# end
+
+post '/stocks/create' do
+	stock = params[:stock_name]
+
+	@recent_tweets = client.search("$#{stock}", :count => 20, :result_type => "recent").collect do |tweet|
+	  "#{tweet.user.screen_name}: #{tweet.text}"
+	end
+
+	@stock_current = "$#{StockQuote::Stock.quote("#{stock}").last}"
+	@stock_name = StockQuote::Stock.quote("#{stock}").company
+	@exchange = StockQuote::Stock.quote("#{stock}").exchange
+	@volume = StockQuote::Stock.quote("#{stock}").volume
+	@avg_volume = StockQuote::Stock.quote("#{stock}").avg_volume
+	
+	if (@volume > @avg_volume)
+		@trend = 'higher'
+	elsif (@volume < @avg_volume)
+		@trend = 'lower'
+	else
+		@trend = 'normal'
+	end
+
+	@times = (@volume / @avg_volume).to_i
+
+	@title = "#{@stock_name} Buzz"
+	@heading = "The buzz about #{@stock_name}:"
+	erb :stocks
+end
+
+
+
+
 
 get '/stocks/:stock' do
 

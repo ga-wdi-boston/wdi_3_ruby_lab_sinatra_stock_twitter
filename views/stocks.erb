@@ -1,9 +1,9 @@
 <div id="stocks">
 
 	<% if @times >= 2 %>
-		<h1 id="alert" class="stocks">
+		<h2 id="alert" class="stocks">
 		<%= @stock_name %> is moving fast, trading at 
-		<%= @times %> times its average volume!</h1>
+		<%= @times %> times its average volume!</h2>
 	<% end %>
 
 	<h2 class="stocks"><%= @stock_name %> is currently trading on <%= @exchange %> at <%= @stock_current %>.</h2>
