@@ -1,9 +1,9 @@
-#require 'pry'
+require 'pry'
 require 'dotenv'
 require 'stock_quote'
 require 'twitter'
 require 'sinatra'
-require 'sinatra/reloader'
+require 'sinatra/reloader' if development?
 set :server, 'webrick'
 Dotenv.load
 
@@ -16,21 +16,14 @@ end
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
-topic = 'GOOG'
-topic_tweets = []
-i = 0
 
-# streaming_client.filter(track: topic) do |tweet|
-#   if tweet.lang == 'en'
-#     i += 1
-#     goog_tweets << {user: tweet.attrs[:user][:screen_name], tweet: tweet.text}
-#     puts "#{i} tweets gathered"
-#     puts "#{tweet.attrs[:user][:screen_name]} tweeted about GOOG: #{tweet.text}"
-#   end
-#   break if i > 25
-# end
-
-client.search(topic, count: 25, result_type: 'recent', lang: 'en').each do |tweet|
-  topic_tweets << {user: tweet.attrs[:user][:screen_name], tweet: tweet.text}
-  puts "#{tweet.attrs[:user][:screen_name]} tweeted about #{topic}: #{tweet.text}\n"
+get '/stocks/:symbol' do
+  topic = params[:symbol]
+  topic_tweets = []
+  stock = StockQuote::Stock.quote(topic)
+  
+  client.search(topic, count: 25, result_type: 'recent', lang: 'en').collect do |tweet|
+    # topic_tweets << {user: tweet.attrs[:user][:screen_name], tweet: tweet.text}
+    "#{tweet.text}"
+  end
 end
