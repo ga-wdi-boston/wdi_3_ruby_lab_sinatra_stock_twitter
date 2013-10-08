@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>@title</title>
+</head>
+<body>
+<ul>
+<% @tweets.each do |tweet| %>
+	<li> <%= tweet %> </li>
+<% end %>
+</ul>
+
+
+def stock(company)
+puts "Company Name: #{StockQuote::Stock.quote(company).company}"
+puts "Date: #{StockQuote::Stock.quote(company).current_date_utc}"
+puts "Time: #{StockQuote::Stock.quote(company).current_time_utc}"
+puts "High: #{StockQuote::Stock.quote(company).high}"
+puts "Low: #{StockQuote::Stock.quote(company).low}"
+end
+</body>
+</html>
