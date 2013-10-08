@@ -16,14 +16,20 @@ $twitter = Twitter::REST::Client.new do |config|
   config.access_token_secret = ENV["ACCESS_SECRET"]
 end
 
-get '/:stock' do
-  @symbol = params[:stock]
-  @company = StockQuote::Stock.quote(@symbol).company
-  @exchange = StockQuote::Stock.quote(@symbol).exchange
-  @high = StockQuote::Stock.quote(@symbol).high
-  @low = StockQuote::Stock.quote(@symbol).low
-  @volume = StockQuote::Stock.quote(@symbol).volume
-  @price = StockQuote::Stock.quote(@symbol).last
+#shows the stock form
+get '/stocks/new' do
+  erb :stock_form
+end
+
+post '/stocks/create' do
+  @symbol = params[:stock_name]
+  @stock = StockQuote::Stock.quote(@symbol)
+  @company = @stock.company
+  @exchange = @stock.exchange
+  @high = @stock.high
+  @low = @stock.low
+  @volume = @stock.volume
+  @price = @stock.last
   
   @tweets = $twitter.search("$#{@symbol}", :count => 10, :result_type => "recent").collect do |tweet|
     if tweet.lang == 'en'
