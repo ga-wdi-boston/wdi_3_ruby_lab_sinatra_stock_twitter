@@ -1,0 +1,6 @@
+source 'https://www.rubygems.org'
+gem 'sinatra'
+gem 'sinatra-reloader'
+require 'twitter'
+require 'dotenv'
+require 'stock_quote'
