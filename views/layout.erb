@@ -3,12 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<title><%= @title %></title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
 
-<div id='header_box'>
-  <h1><%= @heading %></h1>
+<div>
+  <h1 id='heading'><%= @heading %></h1>
 </div>
 <%= yield %>
 </body>

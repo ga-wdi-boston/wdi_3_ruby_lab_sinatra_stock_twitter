@@ -20,7 +20,7 @@ get '/stocks/:stock' do
 
 	stock = params[:stock]
 
-	@recent_tweets = client.search("$#{stock}", :count => 50, :result_type => "recent").collect do |tweet|
+	@recent_tweets = client.search("$#{stock}", :count => 20, :result_type => "recent").collect do |tweet|
 	  "#{tweet.user.screen_name}: #{tweet.text}"
 	end
 	@stock_current = "$#{StockQuote::Stock.quote("#{stock}").last}"
@@ -29,9 +29,9 @@ get '/stocks/:stock' do
 	@volume = StockQuote::Stock.quote("#{stock}").volume
 	@avg_volume = StockQuote::Stock.quote("#{stock}").avg_volume
 	
-	if @volume > @avg_volume
+	if (@volume > @avg_volume)
 		@trend = 'higher'
-	elsif @volume < @avg_volume
+	elsif (@volume < @avg_volume)
 		@trend = 'lower'
 	else
 		@trend = 'normal'
@@ -39,7 +39,7 @@ get '/stocks/:stock' do
 
 	@times = (@volume / @avg_volume).to_i
 
-	@title = "#{@stock} Buzz"
+	@title = "#{@stock_name} Buzz"
 	@heading = "The buzz about #{@stock_name}:"
 	erb :stocks
 end
