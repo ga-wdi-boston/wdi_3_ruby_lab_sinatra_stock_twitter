@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem'pry'
+gem 'pry'
 gem 'sinatra'
 gem 'sinatra-reloader'
 gem 'dotenv'
