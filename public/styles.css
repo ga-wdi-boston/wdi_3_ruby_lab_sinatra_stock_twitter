@@ -11,7 +11,14 @@ li	{padding: 10px 0px 0px 10px;
 	text-align: left;
 	}
 	
-.heading {width: 1000px;}
+#heading_box {width: 800px;
+			  background-color: rgb(177,255,109);
+			  border: 10px rgb(114,178,58) solid;
+			  padding: 10px;
+			  margin-left: 10px;}
+
+h1.heading {color: rgb(241,109,255);
+			}
 
 #twitter {float: left;
 		  width: 400px;
@@ -25,5 +32,6 @@ li	{padding: 10px 0px 0px 10px;
 
 h1#alert {font-weight: bold;
 		  padding: 40px;
-		  border: 10px rgb(241,109,255) solid;
-		  background-color: rgba(114,178,58,0.5)}
+		  background-color: rgb(177,255,109);
+		  border: 10px rgb(114,178,58) solid;
+		  }
