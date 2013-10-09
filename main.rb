@@ -2,13 +2,13 @@ require 'twitter'
 require 'pry'
 require 'dotenv'
 require 'sinatra'
-require 'sinatra/reloader'
+require 'sinatra/reloader' if development?
+require 'stock_quote'
 
 
 set :server, 'webrick'
 
 Dotenv.load
-
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
@@ -20,14 +20,24 @@ client = Twitter::REST::Client.new do |config|
 
 end
 
+get '/stocks/new' do
+	erb :stock_form 
+end
 
-binding.pry 
+post '/stocks/create' do
+	@stock_symbol= params[:stock]
+	@stock = StockQuote::Stock.quote(@stock_symbol)
+	@company = StockQuote::Stock.quote(@stock_symbol).company
+	@last = StockQuote::Stock.quote(@stock_symbol).last
+	@open = StockQuote::Stock.quote(@stock_symbol).open
+	@volume  = StockQuote::Stock.quote(@stock_symbol).volume 
+	@tweets = client.search(@stock_symbol, :count => 25, :result_type => "recent", :lang => "en").collect do |tweet|
+	  "#{tweet.text}"
+	end
+	erb :stocks
+end 
 
 
-company = gets.chomp
-
-stock = StockQuote::Stock.quote(company)
-
-client.search(company)
+#binding.pry 
 
 
