@@ -4,13 +4,7 @@
 	<h2 id="company"><%= @company %></h2>
 </div>
 
-<ul>
-	<% @recent_tweets.each do |tweet| %>
-	<li><%= tweet %></li>
-	<% end %>
-</ul>
-
-<div>
+<div id = "stockstats">
 	<h3>Last reported price:</h3>
 	<p><%= @stock_last %></p>
 	<h3>Price at yesterday's close:</h3>
@@ -20,3 +14,16 @@
 	<h3>Stock high for the day:</h3>
 	<p><%= @high %></p>
 </div>
+
+
+
+<div id = "tweetlist">
+<h3>Recent Tweets</h3>
+<ul>
+	<% @recent_tweets.each do |tweet| %>
+	<li><%= tweet %></li>
+	<% end %>
+</ul>
+</div>
+
+

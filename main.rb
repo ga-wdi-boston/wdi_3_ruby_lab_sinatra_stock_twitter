@@ -40,14 +40,7 @@ stock = StockQuote::Stock.quote(@symbol)
 	@daily_open = stock.open
 	@daily_close = stock.y_close
 	@high = stock.high
-	
 
-	# @stock_last = 			StockQuote::Stock.quote(@symbol).last
-	# @daily_open = 			StockQuote::Stock.quote(@symbol).open
-	# @daily_close	=			StockQuote::Stock.quote(@symbol).y_close}
-	# @high = 						StockQuote::Stock.quote(@symbol).high}
-
-# binding.pry
 
  @recent_tweets = client.search(@symbol, :count => 25, :result_type => "recent", :lang => "en").collect do |tweet|
   "#{tweet.text}"
@@ -56,9 +49,4 @@ end
 
 	  return erb :stocks
 
-
-	# @recent_tweets = client.search("#{@symbol}", :count => 50, :result_type => "recent").collect do |tweet|
- #  "#{tweet.user.screen_name}: #{tweet.text}"
-
-	
 end

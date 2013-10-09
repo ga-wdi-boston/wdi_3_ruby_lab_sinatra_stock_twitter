@@ -1,36 +1,35 @@
 body {
-	font-family: 'Roboto Slab', serif;
-	background: url("./Max_Williamson.png/");
+	font-family:'Droid Sans', sans-serif;
+	background: url("/retail_background_small.jpg");
 	background-size: cover;
 }
 
-h1 {
-	text-align: center;
+li { 
+	margin-top: 1em; 
 }
 
 #header {
-	/*position: fixed;*/
+	position: fixed; left:475px;
+	text-align: center;
+	top: auto;
 }
 
 #company {
 	text-align: center;
 }
 
-#block1 {
+#stockstats {
 	float: left;
 	width: 350px;
 	position: fixed;
 	margin-left: 30px;
+	margin-top: 100px;
 }
 
-#block2 {
+#tweetlist {
 	float: right;
 	width: 500px;
+	margin-top: 100px;
 	margin-right: 30px;
 }
 
-.tweet-user {
-}
-
-.tweet-text {
-	color: navy;}
