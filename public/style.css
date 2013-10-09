@@ -1,1 +1,20 @@
-#
+h1 { 
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+li {
+  padding: 7px;
+}
+
+#stock-data {
+  float: right;
+  border: 1px solid orange;
+  padding: 3px;
+}
+
+#stock-related-tweets {
+  float: left;
+  border: 1px solid orange;
+  padding: 3px;
+}
