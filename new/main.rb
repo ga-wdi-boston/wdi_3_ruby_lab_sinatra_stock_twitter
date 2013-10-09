@@ -1,10 +1,11 @@
-require 'twitter'
 require 'pry'
-require 'dotenv'
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'twitter'
+require 'dotenv'
 require 'stock_quote'
 set :server, 'webrick'
+
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
@@ -17,17 +18,18 @@ $twitter = Twitter::REST::Client.new do |config|
   config.access_token_secret = ENV["ACCESS_SECRET"]
 end
 
-# stock = "GOOG"
+get '/stocks/new' do
+	erb :stock_form
+end
 
-
-
-get '/:stock' do
-	@symbol = params[:stock]
-	@company = StockQuote::Stock.quote(@symbol).company
-	@high = StockQuote::Stock.quote(@symbol).high
-	@low = StockQuote::Stock.quote(@symbol).low
-	@price = StockQuote::Stock.quote(@symbol).last
-	@volume = StockQuote::Stock.quote(@symbol).volume
+post '/stocks/create' do
+	@symbol = params[:stock_name]
+	@stock= StockQuote::Stock.quote(@symbol)
+	@company = @stock.company
+	@high = @stock.high
+	@low = @stock.low
+	@price = @stock.last
+	@volume = @stock.volume
 	@tweets = $twitter.search("$#{@symbol}", :count => 25, :result_type => "recent").collect do |tweet|
   		if tweet.lang == 'en'
   			"#{tweet.user.screen_name}: #{tweet.text}"
@@ -36,5 +38,3 @@ get '/:stock' do
 
 	erb :stock
 end
-
-
