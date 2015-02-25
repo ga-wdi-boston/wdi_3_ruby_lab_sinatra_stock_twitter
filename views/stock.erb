@@ -1,0 +1,18 @@
+<div id="containter">
+	<div id="stock_info">
+		<h1><%= @stock.symbol %></h1>
+		<p>Price: $<%= @stock.last %></p>
+		<p>High: $<%= @stock.high %></p>
+		<p>Low: $<%= @stock.low %></p>
+		<p>Volume: <%= @stock.volume %></p>
+		<p>Market Cap: $<%= @stock.market_cap %></p>
+	</div>
+
+	<div id="twitter_search">
+		<h2>Tweets About <%= @stock.company %></h2>
+		<% @tweets.each do |tweet| %>
+		<p><%= tweet %></p>
+		<% end %>
+	</div>
+
+</div>
