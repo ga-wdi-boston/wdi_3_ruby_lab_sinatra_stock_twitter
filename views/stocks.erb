@@ -1,0 +1,19 @@
+<div id='stocks'>
+	<p>Company is <%= @stock.company %></p>
+	<p>Date is <%= @stock.current_date_utc %></p>
+	<p>Time is <%= @stock.current_time_utc %></p>
+	<p>Exchange is <%= @stock.exchange %></p>
+	<p>Volume is <%= @stock.volume %></p>
+	<p>High is <%= @stock.high %></p>
+	<p>Low is <%= @stock.low %></p>
+</div>
+
+<div id='tweets'>
+	<ul>
+		<% @tweets.each do |tweet| %>
+		<li><%= tweet %></li>
+		<% end %>
+	</ul>
+</div>
+
+
