@@ -1,0 +1,35 @@
+body {
+	font-family:'Droid Sans', sans-serif;
+	background: url("/retail_background_small.jpg");
+	background-size: cover;
+}
+
+li { 
+	margin-top: 1em; 
+}
+
+#header {
+	position: fixed; left:475px;
+	text-align: center;
+	top: auto;
+}
+
+#company {
+	text-align: center;
+}
+
+#stockstats {
+	float: left;
+	width: 350px;
+	position: fixed;
+	margin-left: 30px;
+	margin-top: 100px;
+}
+
+#tweetlist {
+	float: right;
+	width: 500px;
+	margin-top: 100px;
+	margin-right: 30px;
+}
+
