@@ -1,0 +1,16 @@
+<h2><%= @company %></h2>
+
+<ul>
+	<li>Symbol: <%= @symbol %></li>
+	<li>Price: $<%= @price %></li>
+	<li>52-Week High: $<%= @high %></li>
+	<li>52-Week Low: $<%= @low %></li>
+	<li>Volume: <%= @volume %></li>
+</ul>
+
+<h2>Recent tweets about <%= @company %></h2>
+<p>
+<% @tweets.each do |tweet| %>
+	<li><%= tweet %></li>
+<% end %>
+</p>
