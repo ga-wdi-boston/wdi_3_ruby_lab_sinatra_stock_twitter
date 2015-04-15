@@ -1,0 +1,21 @@
+
+<div id="stock-related-tweets">
+  <h3> Recent tweets about <%= @stock.symbol %>: </h3>
+  <ul>
+  <% @stock_tweets.each do |tweet| %>
+    <li><%= tweet %></li>
+  <% end %>
+  </ul>
+</div>
+
+<div id="stock-data">
+  <p>Company: <%= @stock.company %></p>
+  <p>Symbol: <%= @stock.symbol %></p>
+  <p>Exchange: <%= @stock.exchange %></p>
+  <p>Last: <%= @stock.last %></p>
+  <p>High: <%= @stock.high %></p>
+  <p>Low: <%= @stock.low %></p>
+  <p>Open:<%= @stock.open %></p>
+  <p>Volume: <%= @stock.volume %></p>
+  <p>Market Cap: <%= @stock.market_cap %></p>
+</div>
