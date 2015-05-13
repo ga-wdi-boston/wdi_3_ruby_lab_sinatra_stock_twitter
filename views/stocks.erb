@@ -1,0 +1,23 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<title>Your Stockquote Calculator</title>
+</head>
+<body>
+	<h1>Your Stockquote Calculator & Tweet Generator</h1>
+	<div>
+		<h2> This is what the stock is now reading:</h2>
+		<p>Company is <%= @company%></p>
+		<p>Last reading: <%= @last %> </p>
+		<p>Opened at <%= @open %></p>
+		<p>Volume is <%= @volume %></p>
+		<p> The stock symbol is <%= @stock_symbol %></p> 
+		<p>This the stock <%=@stock %></p>
+	</div>
+	</br> 
+	<div>
+		<h1>Below is the list of the 25 most recent tweets on the stock:</h1>
+		<%= @tweets %>
+	</div>
+</body>
+</html>
